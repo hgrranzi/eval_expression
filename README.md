@@ -8,7 +8,7 @@ IN PROGRESS
 
 ## Description
 
-This programm takes as argument a characters string representing an arithmetic expression and prints its calculated result.
+This programm takes as argument a characters string representing an arithmetic expression and prints its calculated result. The calculation can be done with integer values only.
 
 <table>
   <tr>
