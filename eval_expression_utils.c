@@ -26,3 +26,11 @@ void	aka_putnbr(int nbr)
 	else
 		aka_putchar(nbr + 48);
 }
+
+int		aka_atoi(char *str)
+{
+	int	nbr;
+
+	nbr = 0;
+	return (nbr);
+}
