@@ -27,6 +27,16 @@ void	aka_putnbr(int nbr)
 		aka_putchar(nbr + 48);
 }
 
+int		aka_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
 int		aka_atoi(char *str)
 {
 	int	nbr;
