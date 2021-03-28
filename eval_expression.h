@@ -13,9 +13,13 @@
 int		eval_expression(char *str);
 
 char	*remove_spaces(char *argv);
+void	check_wrong(char *str);
+void	display_error(void);
 
 void	aka_putchar(char c);
 void	aka_putnbr(int nbr);
+int		aka_isdigit(char c);
 int		aka_strlen(char *str);
+int		aka_strchr(char *str, char c);
 
 #endif

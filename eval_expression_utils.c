@@ -27,6 +27,11 @@ void	aka_putnbr(int nbr)
 		aka_putchar(nbr + 48);
 }
 
+int		aka_isdigit(char c)
+{
+	return (c >= '0' && c <= '9');
+}
+
 int		aka_strlen(char *str)
 {
 	int	i;
@@ -35,6 +40,20 @@ int		aka_strlen(char *str)
 	while (str[i])
 		i++;
 	return (i);
+}
+
+int		aka_strchr(char *str, char c)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 int		aka_atoi(char *str)
