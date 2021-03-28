@@ -12,7 +12,10 @@
 
 int		eval_expression(char *str);
 
+char	*remove_spaces(char *argv);
+
 void	aka_putchar(char c);
 void	aka_putnbr(int nbr);
+int		aka_strlen(char *str);
 
 #endif
