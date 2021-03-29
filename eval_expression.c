@@ -71,13 +71,13 @@ int			check_priority(char c)
 	return (1);
 }
 
-void		take_operator(char *operators, char c)
+void		take_operator(t_symb *operator, char c)
 {
 	// here we put an operator or a bracket to the operators stak or we eval an expression
 	return ;
 }
 
-void		take_operand(int *operands, char *str, int *i)
+void		take_operand(t_num *operand, char *str, int *i)
 {
 	//here we convert chars to integer and put it to the operands stack
 	return ;
@@ -87,8 +87,8 @@ int			eval_expression(char *argv)
 {
 	int		res;
 	char	*str;
-	char	*operators;
-	int		*operands;
+	t_symb	*operator;
+	t_num	*operand;
 	int		i;
 
 	res = 0;
@@ -97,12 +97,10 @@ int			eval_expression(char *argv)
 		display_error();
 	check_wrong(str);
 	// will be better probably to count the exact lenght of each stack
-	operators = malloc((aka_strlen(str) / 2 + 1) * sizeof(char));
-	operands = malloc((aka_strlen(str) / 2 + 1) * sizeof(int));
 	while (str[i])
 	{
-		take_operand(operands, str, &i);
-		take_operator(operators, str[i]);
+		take_operand(operand, str, &i);
+		take_operator(operator, str[i]);
 		i++;
 	}
 

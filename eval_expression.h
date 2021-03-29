@@ -10,6 +10,18 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+typedef struct		s_num
+{
+	int				n;
+	struct s_num	*next;
+}					t_num;
+
+typedef struct		s_symb
+{
+	char			*c;
+	struct s_symb	*next;
+}					t_symb;
+
 int		eval_expression(char *str);
 
 char	*remove_spaces(char *argv);
