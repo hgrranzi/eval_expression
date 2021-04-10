@@ -85,17 +85,20 @@ int			check_priority(char c)
 	return (1);
 }
 
-void		take_operator()
+int			take_operator(int i)
 {
 	// here we put an operator or a bracket to the operators stak or we eval an expression
-	return ;
+	return (i + 1);
 }
 
-void		take_number(t_stack *number, char *digits, int *i)
+int			take_number(t_stack *number, char *str, int i) //convert chars to integer, put it to the operands stack and move the str index
 {
-	printf("ok\n");
-	//here we convert chars to integer, put it to the operands stack and move the str index
-	return ;
+	int		num;
+	num = aka_atoi(&str[i]);
+	push(number, num);
+	while (aka_isdigit(str[i]))
+		i++;
+	return (i);
 }
 
 int			eval_expression(char *argv)
@@ -116,10 +119,12 @@ int			eval_expression(char *argv)
 	while (str[i])
 	{
 		if (aka_isdigit(str[i]))
-			take_number(&number, str + i, &i);
-		take_operator();
-		i++;
+			i = take_number(&number, str, i);
+		else
+			i = take_operator(i);
 	}
-
+	destroy_stack(&number);
+	destroy_stack(&operator);
+	free(str);
 	return (res);
 }

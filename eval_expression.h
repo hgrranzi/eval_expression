@@ -20,11 +20,14 @@ char	*remove_spaces(char *argv);
 void	check_wrong(char *str);
 void	display_error(void);
 
+int		take_number(t_stack *number, char *str, int i);
+
 void	aka_putchar(char c);
 void	aka_putnbr(int nbr);
 int		aka_isdigit(char c);
 int		aka_strlen(char *str);
 int		aka_strchr(char *str, char c);
+int		aka_atoi(char *str);
 
 void	print_stack(t_stack *stack);
 
