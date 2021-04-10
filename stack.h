@@ -13,9 +13,11 @@
 
 typedef struct	s_stack
 {
-	void		*data; // the element
-	unsigned	status; // number of elements in the stack
-	unsigned	size; // the size of the stack
+	int			*data; // the element
+	int			status; // number of elements in the stack
+	int			size; // the size of the stack
 }				t_stack;
+
+int				*init_stack(t_stack *stack, int size);
 
 #endif
