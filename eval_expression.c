@@ -11,6 +11,7 @@ void	print_stack(t_stack *stack)
 	int	i;
 
 	i = 0;
+	write(1, "----------\n", 11);
 	while (i < stack->status)
 	{
 		aka_putnbr(stack->data[i]);
@@ -18,6 +19,7 @@ void	print_stack(t_stack *stack)
 		i++;
 	}
 	aka_putchar('\n');
+	write(1, "----------\n", 11);
 }
 
 void		display_error(void)
@@ -78,20 +80,63 @@ void		check_wrong(char *str)
 		display_error();
 }
 
-int			check_priority(char c)
+int			is_bracket(int a)
 {
-	if (c == '+' || c == '-')
-		return (0);
-	return (1);
+	return (a == OPEN_B || a == CLOSE_B);
 }
 
-int			take_operator(int i)
+int			priority(int a)
 {
-	// here we put an operator or a bracket to the operators stak or we eval an expression
+	if (a == PLUS || a == MINUS)
+		return (1);
+	if (a == MULTI || a == DIVISE || a == MODULO)
+		return (2);
+	return (0);
+}
+
+int			is_priority(int a, int b)
+{
+	return (priority(a) > priority(b));
+}
+
+void		eval_before(t_stack *operator, t_stack *number)
+{
+	int		a;
+	int		b;
+
+	b = pop(number);
+	a = pop(number);
+	switch (pop(operator))
+	{
+	case PLUS:
+		push(number, a + b);
+		break;
+	case MINUS:
+		push(number, a - b);
+		break;
+	case MULTI:
+		push(number, a * b);
+		break;
+	case DIVISE:
+		push(number, a / b);
+		break;
+	case MODULO:
+		push(number, a % b);
+		break;
+	default:
+		break;
+	}
+}
+
+int			take_operator(t_stack *operator, t_stack *number, int symb, int i)
+{
+	while (!is_empty(operator) && !is_bracket(symb) && !is_priority(symb, operator->data[operator->status - 1]))
+		eval_before(operator, number);
+	push(operator, symb);
 	return (i + 1);
 }
 
-int			take_number(t_stack *number, char *str, int i) //convert chars to integer, put it to the operands stack and move the str index
+int			take_number(t_stack *number, char *str, int i)
 {
 	int		num;
 	num = aka_atoi(&str[i]);
@@ -109,7 +154,6 @@ int			eval_expression(char *argv)
 	t_stack	number;
 	t_stack	operator;
 
-	res = 0;
 	i = 0;
 	if (!(str = remove_spaces(argv)))
 		display_error();
@@ -121,8 +165,11 @@ int			eval_expression(char *argv)
 		if (aka_isdigit(str[i]))
 			i = take_number(&number, str, i);
 		else
-			i = take_operator(i);
+			i = take_operator(&operator, &number, str[i], i);
 	}
+	while (operator.status)
+		eval_before(&operator, &number);
+	res = number.data[0];
 	destroy_stack(&number);
 	destroy_stack(&operator);
 	free(str);
