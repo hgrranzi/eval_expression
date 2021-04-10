@@ -10,9 +10,16 @@
 # include <unistd.h>
 # include "stack.h"
 
-#include <stdio.h>
+# include <stdio.h>
 
-#define STACK_SIZE 64
+# define STACK_SIZE 64
+
+# define PLUS 43
+# define MINUS 45
+# define MULTI 42
+# define DIVISE 47
+# define MODULO 37
+
 
 int		eval_expression(char *str);
 
