@@ -16,15 +16,14 @@ void	aka_putnbr(int nbr)
 	if (nbr < 0)
 	{
 		aka_putchar('-');
-		aka_putnbr(-nbr);
-	}
-	if (nbr > 9)
-	{
-		aka_putnbr(nbr / 10);
-		aka_putnbr(nbr % 10);
+		aka_putnbr(-1 * nbr);
 	}
 	else
-		aka_putchar(nbr + 48);
+	{
+		if (nbr > 9)
+			aka_putnbr(nbr / 10);
+		aka_putchar(nbr % 10 + 48);
+	}
 }
 
 int		aka_isdigit(char c)
