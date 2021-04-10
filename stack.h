@@ -19,5 +19,7 @@ typedef struct	s_stack
 }				t_stack;
 
 int				*init_stack(t_stack *stack, int size);
+int				is_empty(t_stack *stack);
+int				is_full(t_stack *stack);
 
 #endif

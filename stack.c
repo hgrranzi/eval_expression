@@ -11,5 +11,15 @@ int	*init_stack(t_stack *stack, int size)
 	stack->data = malloc(size * sizeof(int));
 	stack->status = 0;
 	stack->size = size;
-	return (stack->data);
+	return (stack->data); // if malloc fails the function returns null
+}
+
+int	is_empty(t_stack *stack)
+{
+	return (stack->status == 0);
+}
+
+int	is_full(t_stack *stack)
+{
+	return (stack->status == stack->size);
 }
