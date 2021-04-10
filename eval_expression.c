@@ -132,7 +132,14 @@ int			take_operator(t_stack *operator, t_stack *number, int symb, int i)
 {
 	while (!is_empty(operator) && !is_bracket(symb) && !is_priority(symb, operator->data[operator->status - 1]))
 		eval_before(operator, number);
-	push(operator, symb);
+	if (symb == CLOSE_B)
+	{
+		while (operator->data[operator->status - 1] != OPEN_B)
+			eval_before(operator, number);
+		pop(operator);
+	}
+	else
+		push(operator, symb);
 	return (i + 1);
 }
 
