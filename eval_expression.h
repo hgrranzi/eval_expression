@@ -8,7 +8,6 @@
 # define EVAL_EXPRESSION_H
 
 # include <unistd.h>
-# include <stdlib.h>
 # include "stack.h"
 
 int		eval_expression(char *str);
