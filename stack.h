@@ -9,8 +9,6 @@
 
 # include <stdlib.h>
 
-#define ADD_STACK 64
-
 typedef struct	s_stack
 {
 	int			*data; // the element
@@ -23,5 +21,6 @@ int				is_empty(t_stack *stack);
 int				is_full(t_stack *stack);
 void			push(t_stack *stack, int element);
 int				pop(t_stack *stack);
+void			destroy_stack(t_stack *stack);
 
 #endif
