@@ -91,9 +91,10 @@ void		take_operator()
 	return ;
 }
 
-void		take_operand()
+void		take_number(t_stack *number, char *digits, int *i)
 {
-	//here we convert chars to integer and put it to the operands stack
+	printf("ok\n");
+	//here we convert chars to integer, put it to the operands stack and move the str index
 	return ;
 }
 
@@ -102,15 +103,20 @@ int			eval_expression(char *argv)
 	int		res;
 	char	*str;
 	int		i;
+	t_stack	number;
+	t_stack	operator;
 
 	res = 0;
 	i = 0;
 	if (!(str = remove_spaces(argv)))
 		display_error();
 	check_wrong(str);
+	if (!(init_stack(&number, STACK_SIZE)) || (!init_stack(&operator, STACK_SIZE)))
+		display_error();
 	while (str[i])
 	{
-		take_operand();
+		if (aka_isdigit(str[i]))
+			take_number(&number, str + i, &i);
 		take_operator();
 		i++;
 	}
