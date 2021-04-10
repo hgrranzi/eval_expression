@@ -10,6 +10,10 @@
 # include <unistd.h>
 # include "stack.h"
 
+#include <stdio.h>
+
+#define STACK_SIZE 64
+
 int		eval_expression(char *str);
 
 char	*remove_spaces(char *argv);
