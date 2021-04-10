@@ -22,83 +22,6 @@ void	print_stack(t_stack *stack)
 	write(1, "----------\n", 11);
 }
 
-void		display_error(void)
-{
-	write(1, "Error\n", 6);
-	exit(0);
-}
-
-char		*remove_spaces(char *argv)
-{
-	char	*str;
-	int		i;
-	int		j;
-	int		spaces;
-
-	i = 0;
-	j = 0;
-	spaces = 0;
-	while (argv[i])
-	{
-		if (argv[i] == ' ')
-			spaces++;
-		i++;
-	}
-	if (!(str = malloc((aka_strlen(argv) - spaces + 1) * sizeof(char))))
-		return (NULL);
-	i = 0;
-	while (argv[i])
-	{
-		if (argv[i] != ' ')
-			str[j++] = argv[i];
-		i++;
-	}
-	str[j] = '\0';
-	return (str);
-}
-
-void		check_wrong(char *str)
-{
-	int		i;
-	int		open_bracket;
-	int		close_bracket;
-	char	operators[] = "+-*/%%";
-	char	chs[] = "()";
-
-	i = 0;
-	open_bracket = close_bracket = 0;
-	while (str[i] && (aka_isdigit(str[i]) || aka_strchr(operators, str[i])
-		|| aka_strchr(chs, str[i])))
-	{
-		if (str[i] == '(')
-			open_bracket++;
-		if (str[i] == ')')
-			close_bracket++;
-		i++;
-	}
-	if (open_bracket != close_bracket || str[i] != '\0')
-		display_error();
-}
-
-int			is_bracket(int a)
-{
-	return (a == OPEN_B || a == CLOSE_B);
-}
-
-int			priority(int a)
-{
-	if (a == PLUS || a == MINUS)
-		return (1);
-	if (a == MULTI || a == DIVISE || a == MODULO)
-		return (2);
-	return (0);
-}
-
-int			is_priority(int a, int b)
-{
-	return (priority(a) > priority(b));
-}
-
 void		eval_before(t_stack *operator, t_stack *number)
 {
 	int		a;
@@ -130,7 +53,8 @@ void		eval_before(t_stack *operator, t_stack *number)
 
 int			take_operator(t_stack *operator, t_stack *number, int symb, int i)
 {
-	while (!is_empty(operator) && !is_bracket(symb) && !is_priority(symb, operator->data[operator->status - 1]))
+	while (!is_empty(operator) && !is_bracket(symb)
+	&& !is_priority(symb, operator->data[operator->status - 1]))
 		eval_before(operator, number);
 	if (symb == CLOSE_B)
 	{
@@ -164,8 +88,9 @@ int			eval_expression(char *argv)
 	i = 0;
 	if (!(str = remove_spaces(argv)))
 		display_error();
-	check_wrong(str);
-	if (!(init_stack(&number, STACK_SIZE)) || (!init_stack(&operator, STACK_SIZE)))
+	check_expression(str);
+	if (!(init_stack(&number, STACK_SIZE))
+	|| (!init_stack(&operator, STACK_SIZE)))
 		display_error();
 	while (str[i])
 	{
