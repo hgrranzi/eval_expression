@@ -57,8 +57,26 @@ int		aka_strchr(char *str, char c)
 
 int		aka_atoi(char *str)
 {
-	int	nbr;
+	long	nbr;
+	long	sign;
+	int	i;
 
 	nbr = 0;
-	return (nbr);
+	sign = 1;
+	i = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' ||
+			str[i] == '\r' || str[i] == '\v' || str[i] == '\f')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nbr = nbr * 10 + str[i] - '0';
+		i++;
+	}
+	return ((int)(nbr * sign));
 }
