@@ -9,6 +9,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include "stack.h"
 
 int		eval_expression(char *str);
 
@@ -21,5 +22,7 @@ void	aka_putnbr(int nbr);
 int		aka_isdigit(char c);
 int		aka_strlen(char *str);
 int		aka_strchr(char *str, char c);
+
+void	print_stack(t_stack *stack);
 
 #endif

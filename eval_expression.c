@@ -6,6 +6,20 @@
 
 #include "eval_expression.h"
 
+void	print_stack(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	while (i < stack->status)
+	{
+		aka_putnbr(stack->data[i]);
+		aka_putchar(' ');
+		i++;
+	}
+	aka_putchar('\n');
+}
+
 void		display_error(void)
 {
 	write(1, "Error\n", 6);
