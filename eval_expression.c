@@ -41,6 +41,8 @@ void		eval_before(t_stack *operator, t_stack *number)
 		push(number, a * b);
 		break;
 	case DIVISE:
+		if (b == 0)
+			display_error();
 		push(number, a / b);
 		break;
 	case MODULO:
