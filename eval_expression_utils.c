@@ -11,7 +11,7 @@ void	aka_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	aka_putnbr(int nbr)
+void	aka_putnbr(long int nbr)
 {
 	if (nbr < 0)
 	{
@@ -78,5 +78,7 @@ int		aka_atoi(char *str)
 		nbr = nbr * 10 + str[i] - '0';
 		i++;
 	}
+	if (nbr < INT32_MIN || nbr > INT32_MAX)
+		display_error();
 	return ((int)(nbr * sign));
 }

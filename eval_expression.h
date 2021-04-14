@@ -37,7 +37,7 @@ void	check_expression(char *str);
 void	display_error(void);
 
 void	aka_putchar(char c);
-void	aka_putnbr(int nbr);
+void	aka_putnbr(long int nbr);
 int		aka_isdigit(char c);
 int		aka_strlen(char *str);
 int		aka_strchr(char *str, char c);
