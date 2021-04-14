@@ -28,3 +28,5 @@ This programm takes as argument a characters string representing an arithmetic e
     <td> <b>External functions</b> </td> <td> write, malloc, free </td>
   </tr>
 </table>
+
+The behavior is undefined if the evaluation results in overflow of 32-bits integer.
