@@ -66,17 +66,24 @@ void		check_expression(char *str)
 	int		open_bracket;
 	int		close_bracket;
 	char	operators[] = "+-*/%%";
-	char	chs[] = "()";
 
 	i = 0;
 	open_bracket = close_bracket = 0;
 	while (str[i] && (aka_isdigit(str[i]) || aka_strchr(operators, str[i])
-		|| aka_strchr(chs, str[i])))
+		|| is_bracket(str[i])))
 	{
-		if (str[i] == '(')
+		if (str[i] == OPEN_B)
+		{
+			if (i != 0 && aka_isdigit(str[i - 1]))
+				display_error();
 			open_bracket++;
-		if (str[i] == ')')
+		}
+		if (str[i] == CLOSE_B)
+		{
+			if (aka_isdigit(str[i + 1]))
+				display_error();
 			close_bracket++;
+		}
 		i++;
 	}
 	if (open_bracket != close_bracket || str[i] != '\0')
