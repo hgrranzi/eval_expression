@@ -10,9 +10,8 @@
 # include <unistd.h>
 # include "stack.h"
 
-# include <stdio.h>
-
 # define STACK_SIZE 64
+# define MAX_INT 2147483647
 
 # define PLUS 43
 # define MINUS 45

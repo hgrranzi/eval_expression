@@ -78,7 +78,7 @@ int		aka_atoi(char *str)
 		nbr = nbr * 10 + str[i] - '0';
 		i++;
 	}
-	if (nbr < INT32_MIN || nbr > INT32_MAX)
+	if (nbr < -MAX_INT || nbr > MAX_INT)
 		display_error();
 	return ((int)(nbr * sign));
 }
