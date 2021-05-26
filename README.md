@@ -4,7 +4,7 @@ A simple math expression calculator
 
 ## Status
 
-IN PROGRESS
+COMPLETED
 
 ## Description
 
@@ -12,7 +12,7 @@ This programm takes as argument a characters string representing an arithmetic e
 
 <table>
   <tr>
-    <td> <b>Supported characters</b> </td> <td> Digits 0-9<br>
+    <td> <b>Supported characters</b> </td> <td> Digits 0-9 <br>
                                                 Space <br>
                                                 Round brackets <br>
                                                 Math operators </td>
@@ -29,4 +29,5 @@ This programm takes as argument a characters string representing an arithmetic e
   </tr>
 </table>
 
+The programm ends and displays Error if any unsupported characther or division by zero occurred. <br>
 The behavior is undefined if the evaluation results in overflow of 32-bits integer.
