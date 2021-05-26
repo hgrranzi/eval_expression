@@ -10,7 +10,6 @@
 # include <unistd.h>
 # include "stack.h"
 
-# define STACK_SIZE 64
 # define MAX_INT 2147483647
 
 # define PLUS 43
@@ -41,7 +40,5 @@ int		aka_isdigit(char c);
 int		aka_strlen(char *str);
 int		aka_strchr(char *str, char c);
 int		aka_atoi(char *str);
-
-void	print_stack(t_stack *stack);
 
 #endif

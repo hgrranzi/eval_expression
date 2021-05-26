@@ -6,22 +6,6 @@
 
 #include "eval_expression.h"
 
-void	print_stack(t_stack *stack)
-{
-	int	i;
-
-	i = 0;
-	write(1, "----------\n", 11);
-	while (i < stack->status)
-	{
-		aka_putnbr(stack->data[i]);
-		aka_putchar(' ');
-		i++;
-	}
-	aka_putchar('\n');
-	write(1, "----------\n", 11);
-}
-
 void		eval_before(t_stack *operator, t_stack *number)
 {
 	int		a;
