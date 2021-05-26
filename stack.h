@@ -9,6 +9,8 @@
 
 # include <stdlib.h>
 
+# define STACK_SIZE 64
+
 typedef struct	s_stack
 {
 	int			*data; // the element
@@ -17,6 +19,7 @@ typedef struct	s_stack
 }				t_stack;
 
 int				*init_stack(t_stack *stack, int size);
+void			resize_stack(t_stack *stack);
 int				is_empty(t_stack *stack);
 int				is_full(t_stack *stack);
 void			push(t_stack *stack, int element);
