@@ -67,3 +67,9 @@ void	destroy_stack(t_stack *stack)
 	stack->status = 0;
 	stack->size = 0;
 }
+
+void		display_error(void)
+{
+	write(2, "Error\n", 6);
+	exit(0);
+}

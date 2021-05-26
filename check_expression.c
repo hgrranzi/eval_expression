@@ -25,12 +25,6 @@ int			is_priority(int a, int b)
 	return (priority(a) > priority(b));
 }
 
-void		display_error(void)
-{
-	write(2, "Error\n", 6);
-	exit(0);
-}
-
 char		*remove_spaces(char *argv)
 {
 	char	*str;

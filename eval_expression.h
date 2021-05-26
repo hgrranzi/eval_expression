@@ -7,7 +7,6 @@
 #ifndef EVAL_EXPRESSION_H
 # define EVAL_EXPRESSION_H
 
-# include <unistd.h>
 # include "stack.h"
 
 # define MAX_INT 2147483647
@@ -32,7 +31,6 @@ int		priority(int a);
 int		is_bracket(int a);
 char	*remove_spaces(char *argv);
 void	check_expression(char *str);
-void	display_error(void);
 
 void	aka_putchar(char c);
 void	aka_putnbr(long int nbr);
