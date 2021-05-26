@@ -10,7 +10,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define STACK_SIZE 64
+# define STACK_SIZE 32
 
 typedef struct	s_stack
 {
